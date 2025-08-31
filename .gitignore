@@ -1,0 +1,19 @@
+# Terraform
+.terraform/
+terraform.tfstate
+terraform.tfstate.*
+crash.log
+*.tfvars
+# Ansible
+*.retry
+.vault_pass
+# General
+*.pem
+*.key
+*.crt
+.env
+__pycache__/
+*.pyc
+.DS_Store
+.vscode/
+.idea/

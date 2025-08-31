@@ -1,0 +1,9 @@
+plugin: amazon.aws.aws_ec2
+regions: [us-east-2]
+keyed_groups:
+  - key: tags.Name
+    prefix: tag_Name_
+filters:
+  tag:Project: pcsoft
+compose:
+  ansible_user: ubuntu

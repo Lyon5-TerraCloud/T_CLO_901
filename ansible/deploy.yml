@@ -1,0 +1,31 @@
+---
+- hosts: all
+  become: true
+  vars:
+    image: "{{ lookup('env','ECR_IMAGE') | default('nginx:alpine', true) }}"
+    container_name: app
+    host_port: 80
+  tasks:
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+        update_cache: true
+
+    - name: Ensure docker service
+      service:
+        name: docker
+        state: started
+        enabled: true
+
+    - name: Pull image
+      community.docker.docker_image:
+        name: "{{ image }}"
+        source: pull
+
+    - name: Run container
+      community.docker.docker_container:
+        name: "{{ container_name }}"
+        image: "{{ image }}"
+        published_ports: ["{{ host_port }}:80"]
+        restart_policy: unless-stopped
