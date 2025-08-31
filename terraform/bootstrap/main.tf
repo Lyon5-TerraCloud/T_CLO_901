@@ -31,5 +31,5 @@ resource "aws_dynamodb_table" "lock" {
 }
 
 variable "region"       { type = string  default = "us-east-2" }
-variable "state_bucket" { type = string  default = "pcsoft-tfstate-CHANGE-ME" }
+variable "state_bucket" { type = string  default = "pcsoft-tfstate-mlkzefiapsmvnwqpkfjvuele" }
 variable "lock_table"   { type = string  default = "pcsoft-tflock" }
